@@ -29,9 +29,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: 6rem auto;
-  width: 80%;
+  width: 50%;
   padding: 1rem;
-  border: 1px solid #dddddd;
-  border-radius: 0.5rem;
+  border: 1px solid #000000;
+  border-radius: 0.2rem;
 }
 </style>
