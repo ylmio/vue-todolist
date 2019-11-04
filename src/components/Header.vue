@@ -30,4 +30,12 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
     }
+    #addIterm:focus{
+        outline: none;
+        border-color: darkorange;
+    }
+    #addIterm:active{
+        position: relative;
+        top: 2px;
+    }
 </style>
