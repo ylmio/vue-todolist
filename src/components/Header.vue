@@ -34,8 +34,5 @@
         outline: none;
         border-color: darkorange;
     }
-    #addIterm:active{
-        position: relative;
-        top: 2px;
-    }
+
 </style>
