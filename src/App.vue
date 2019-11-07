@@ -1,8 +1,8 @@
 <template>
   <div id="root">
-    <Header></Header>
-    <List></List>
-    <Footer></Footer>
+    <Header />
+    <List :planList="planList"/>
+    <Footer />
   </div>
 </template>
 
@@ -19,7 +19,27 @@ export default {
     Footer
   },
   data(){
-
+    return{
+      planList:[
+        {
+          finished:false,
+          cont:"Vue-课程讲解1"
+        },
+        {
+          finished:false,
+          cont:"Vue-课程讲解2"
+        },
+        {
+          finished:false,
+          cont:"Vue-课程讲解3"
+        },
+        {
+          finished:false,
+          cont:"Vue-课程讲解4"
+        },
+      ],
+      findIdx:0
+    }
   },
   methods:{
 
@@ -29,6 +49,7 @@ export default {
 
 <style>
 #root {
+  font-size: 1.4rem;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
