@@ -1,22 +1,25 @@
 <template>
     <div id="list">
         <ul>
-            <li v-for="(item,index) in planList" v-bind:key="item.index" @click="choose($event,index)">
-                <i class="iconfont icon-noSelect"></i>
-                <span>{{item.cont}}</span>
-            </li>
+            <Iterm
+                    v-for="(item,index) in planList"
+                    v-bind:key="item.index"
+                    :item="item"
+                    @click="choose($event,index)"
+            />
         </ul>
     </div>
 </template>
 
 <script>
+    import Iterm from "./Iterm"
     export default {
         name: "List",
         props:{
             planList:Array
         },
         components:{
-
+            Iterm
         },
         methods:{
             choose:function(e){
@@ -38,20 +41,5 @@
 </script>
 
 <style scoped>
-    #list>ul>li{
-        display: flex;
-        height: 3rem;
-        line-height: 3rem;
-        border: 1px solid #cccccc;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
-        padding-left: 1rem;
-        cursor: pointer;
-        margin: 1rem 0;
-    }
-    #list>ul>li>span{
-        display: inline-block;
-        margin-left: 1rem;
-    }
+
 </style>
