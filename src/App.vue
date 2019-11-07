@@ -17,6 +17,12 @@ export default {
     Header,
     List,
     Footer
+  },
+  data(){
+
+  },
+  methods:{
+
   }
 }
 </script>

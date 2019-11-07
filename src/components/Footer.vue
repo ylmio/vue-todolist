@@ -2,9 +2,9 @@
     <div id="foot">
         <div>
             <i class="iconfont icon-noSelect" id="selectAll" @click="selectAll"></i>
-            <p>已选 <span id="beSel">0</span> 件</p>
+            <p>已选 <span id="beSel">{{}}</span> 件</p>
             <b class="gap">/</b>
-            <p>总计 <span id="all">3</span> 件</p>
+            <p>总计 <span id="all">{{}}</span> 件</p>
         </div>
         <input type="button" id="clear" @click="clear" value="清除已完成的任务">
     </div>
