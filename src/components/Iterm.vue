@@ -2,12 +2,13 @@
     <li
         @mouseenter="dealShow(true)"
         @mouseleave="dealShow(false)"
+        :style="{background:bgColor}"
     >
         <label>
             <input type="checkbox" v-model="item.finished">
             <span>{{item.cont}}</span>
         </label>
-        <button class="delbtn" v-show="isShowBtn">删除</button>
+        <button class="delbtn" v-show="isShowBtn" @click="deleteIterm">删除</button>
     </li>
 </template>
 
@@ -20,12 +21,19 @@
         },
         data(){
             return{
-                isShowBtn:false
+                isShowBtn:false,
+                bgColor:"#ffffff"
             }
         },
         methods:{
             dealShow(isShow){
+                //控制删除按钮的显示与隐藏
                 this.isShowBtn = isShow;
+                //动态控制样式
+                this.bgColor = isShow ? "#dddddd":"#ffffff"
+            },
+            deleteIterm(){
+
             }
         }
 
@@ -67,5 +75,8 @@
         border-radius: 2px;
         cursor: pointer;
         height: 3rem;
+    }
+    .bgColor{
+        background: red;
     }
 </style>

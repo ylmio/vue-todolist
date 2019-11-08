@@ -1,7 +1,9 @@
 <template>
     <div id="foot">
         <div>
-            <i class="iconfont icon-noSelect" id="selectAll" @click="selectAll"></i>
+            <label>
+                <input type="checkbox" id="selectAll" @click="selectAll">
+            </label>
             <p>已选 <span id="beSel">{{}}</span> 件</p>
             <b class="gap">/</b>
             <p>总计 <span id="all">{{}}</span> 件</p>
@@ -53,6 +55,7 @@
     #selectAll{
         margin-right: 1rem;
         cursor: pointer;
+        vertical-align: middle;
     }
     #clear:active{
         position: relative;
