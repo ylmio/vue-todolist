@@ -31,7 +31,7 @@
             },
             isCheck:{
                 get(){
-                  return this.finishedCount === this.planList.length;
+                  return this.finishedCount === this.planList.length&&this.planList.length>0;
                 },
                 set(val){
                     this.selectedAllItem(val);
