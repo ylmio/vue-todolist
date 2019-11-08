@@ -8,7 +8,7 @@
             <input type="checkbox" v-model="item.finished">
             <span>{{item.cont}}</span>
         </label>
-        <button class="delbtn" v-show="isShowBtn" @click="deleteIterm">删除</button>
+        <button class="delbtn" v-show="isShowBtn" @click="delIterm()">删除</button>
     </li>
 </template>
 
@@ -17,24 +17,29 @@
     export default {
         name: "Iterm",
         props:{
-            item:Object
+            item:Object,
+            index:Number,//记录当前的任务在数组中的下标位置
+            delTodo:Function
         },
         data(){
             return{
                 isShowBtn:false,
-                bgColor:"#ffffff"
+                bgColor:"#ffffff",
             }
         },
         methods:{
             dealShow(isShow){
                 //控制删除按钮的显示与隐藏
                 this.isShowBtn = isShow;
-                //动态控制样式
+                //动态控制背景色
                 this.bgColor = isShow ? "#dddddd":"#ffffff"
             },
-            deleteIterm(){
-
+            delIterm(){
+                if(window.confirm(`您确定删除${this.item.cont}吗？`)){
+                    this.delTodo(this.index);//把index传给父组件
+                }
             }
+
         }
 
     }
@@ -75,8 +80,5 @@
         border-radius: 2px;
         cursor: pointer;
         height: 3rem;
-    }
-    .bgColor{
-        background: red;
     }
 </style>

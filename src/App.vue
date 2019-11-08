@@ -1,7 +1,10 @@
 <template>
   <div id="root">
     <Header />
-    <List :planList="planList"/>
+    <List
+          :planList="planList"
+          :delTodo="delTodo"
+    />
     <Footer />
   </div>
 </template>
@@ -37,12 +40,14 @@ export default {
           finished:false,
           cont:"Vue-课程讲解4"
         },
-      ],
-      findIdx:0
+      ]
     }
   },
   methods:{
-
+    delTodo(index){
+      //根据索引删除一条记录
+      this.planList.splice(index,1);
+    }
   }
 }
 </script>

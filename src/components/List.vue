@@ -2,9 +2,11 @@
     <div id="list">
         <ul>
             <Iterm
-                v-for="(item) in planList"
-                v-bind:key="item.index"
-                v-bind:item="item"
+                v-for="(item,index) in planList"
+                :key="item.index"
+                :item="item"
+                :index="index"
+                :delTodo="delTodo"
             />
         </ul>
     </div>
@@ -15,10 +17,16 @@
     export default {
         name: "List",
         props:{
-            planList:Array
+            planList:Array,
+            delTodo:Function
         },
         components:{
             Iterm
+        },
+        data(){
+            return{
+
+            }
         },
         methods:{
 
