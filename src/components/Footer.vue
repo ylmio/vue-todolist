@@ -4,9 +4,9 @@
             <label>
                 <input type="checkbox" id="selectAll" @click="selectAll">
             </label>
-            <p>已选 <span id="beSel">{{}}</span> 件</p>
+            <p>已选 <span id="beSel">{{finishedCount}}</span> 件</p>
             <b class="gap">/</b>
-            <p>总计 <span id="all">{{}}</span> 件</p>
+            <p>总计 <span id="all">{{planList.length}}</span> 件</p>
         </div>
         <input type="button" id="clear" @click="clear" value="清除已完成的任务">
     </div>
@@ -15,6 +15,9 @@
 <script>
     export default {
         name: "Footer",
+        props:{
+            planList:Array
+        },
         methods:{
             selectAll:function(){
                 alert(this);
@@ -22,6 +25,12 @@
             },
             clear:function(){
                 alert("cccc");
+            }
+        },
+        computed:{
+            finishedCount(){
+                //默认调用get方法
+                return this.planList.reduce((total,item)=>total+(item.finished?1:0),0);
             }
         }
     }

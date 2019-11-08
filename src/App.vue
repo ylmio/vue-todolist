@@ -7,7 +7,9 @@
         :planList="planList"
         :delTodo="delTodo"
     />
-    <Footer />
+    <Footer
+        :planList="planList"
+    />
   </div>
 </template>
 
@@ -31,7 +33,7 @@ export default {
           cont:"Vue-课程讲解1"
         },
         {
-          finished:false,
+          finished:true,
           cont:"Vue-课程讲解2"
         },
         {
@@ -41,6 +43,10 @@ export default {
         {
           finished:false,
           cont:"Vue-课程讲解4"
+        },
+        {
+          finished:false,
+          cont:"打球"
         },
       ]
     }
