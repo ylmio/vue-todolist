@@ -2,35 +2,40 @@
     <div id="foot">
         <div>
             <label>
-                <input type="checkbox" id="selectAll" @click="selectAll">
+                <input type="checkbox" id="selectAll" v-model="isCheck">
             </label>
             <p>已选 <span id="beSel">{{finishedCount}}</span> 件</p>
             <b class="gap">/</b>
             <p>总计 <span id="all">{{planList.length}}</span> 件</p>
         </div>
-        <input type="button" id="clear" @click="clear" value="清除已完成的任务">
+        <input type="button" id="clear" @click="clearFinishedItem" value="清除已完成的任务">
     </div>
 </template>
 
 <script>
+    /* eslint-disable */
     export default {
         name: "Footer",
         props:{
-            planList:Array
+            planList:Array,
+            selectedAllItem:Function,
+            clearFinishedItem:Function
         },
         methods:{
-            selectAll:function(){
-                alert(this);
 
-            },
-            clear:function(){
-                alert("cccc");
-            }
         },
         computed:{
             finishedCount(){
                 //默认调用get方法
                 return this.planList.reduce((total,item)=>total+(item.finished?1:0),0);
+            },
+            isCheck:{
+                get(){
+                  return this.finishedCount === this.planList.length;
+                },
+                set(val){
+                    this.selectedAllItem(val);
+                }
             }
         }
     }

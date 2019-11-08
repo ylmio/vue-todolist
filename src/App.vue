@@ -9,6 +9,8 @@
     />
     <Footer
         :planList="planList"
+        :selectedAllItem="selectedAllItem"
+        :clearFinishedItem="clearFinishedItem"
     />
   </div>
 </template>
@@ -59,6 +61,16 @@ export default {
     //根据索引删除一条记录
     delTodo(index){
       this.planList.splice(index,1);
+    },
+    //是否全部选中
+    selectedAllItem(isCheck){
+      this.planList.forEach(item=>{
+        item.finished=isCheck;
+      })
+    },
+    //清除选中任务
+    clearFinishedItem:function(){
+      this.planList = this.planList.filter(item=>!item.finished);
     }
   }
 }
