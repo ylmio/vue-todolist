@@ -4,14 +4,46 @@
             <h1>待办事项</h1>
         </header>
         <label for="addIterm">
-            <input id="addIterm" type="text" placeholder="请输入待办事项，并按回车键添加">
+            <input
+                id="addIterm"
+                type="text"
+                placeholder="请输入待办事项，并按回车键添加"
+                v-model="cont"
+                @keyup.enter="addTodo()"
+            />
         </label>
     </div>
 </template>
 
 <script>
+    /* eslint-disable */
     export default {
-        name: "Header"
+        name: "Header",
+        props:{
+            addItem:Function
+        },
+        data(){
+            return{
+                cont:""
+            }
+        },
+        methods:{
+            //动态添加日程数据
+            addTodo(){
+                //1.判断是否为空
+                let cont = this.cont.trim();
+                if(!cont){
+                    alert("输入的任务不能为空！");
+                    return false;
+                }
+                //2.生成一个item对象
+                let item = {cont,finished:false};
+                //3.调用父组件的插入方法
+                this.addItem(item);
+                //4.清空输入框
+                this.cont = "";
+            }
+        }
     }
 </script>
 

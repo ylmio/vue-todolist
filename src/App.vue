@@ -1,9 +1,11 @@
 <template>
   <div id="root">
-    <Header />
+    <Header
+        :addItem="addItem"
+    />
     <List
-          :planList="planList"
-          :delTodo="delTodo"
+        :planList="planList"
+        :delTodo="delTodo"
     />
     <Footer />
   </div>
@@ -44,8 +46,12 @@ export default {
     }
   },
   methods:{
+    //插入一条任务
+    addItem(item){
+      this.planList.unshift(item);
+    },
+    //根据索引删除一条记录
     delTodo(index){
-      //根据索引删除一条记录
       this.planList.splice(index,1);
     }
   }
