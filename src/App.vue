@@ -16,64 +16,54 @@
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import List from './components/List.vue'
-import Footer from './components/Footer.vue'
+  //引入组件
+  import Header from './components/Header.vue'
+  import List from './components/List.vue'
+  import Footer from './components/Footer.vue'
+  //引入工具类
+  import localStorageUtil from './utills/localStorageUtil'
 
-export default {
-  name: 'app',
-  components: {
-    Header,
-    List,
-    Footer
-  },
-  data(){
-    return{
-      planList:[
-        {
-          finished:false,
-          cont:"Vue-课程讲解1"
-        },
-        {
-          finished:true,
-          cont:"Vue-课程讲解2"
-        },
-        {
-          finished:false,
-          cont:"Vue-课程讲解3"
-        },
-        {
-          finished:false,
-          cont:"Vue-课程讲解4"
-        },
-        {
-          finished:false,
-          cont:"打球"
-        },
-      ]
-    }
-  },
-  methods:{
-    //插入一条任务
-    addItem(item){
-      this.planList.unshift(item);
+  export default {
+    name: 'app',
+    components: {
+      Header,
+      List,
+      Footer
     },
-    //根据索引删除一条记录
-    delTodo(index){
-      this.planList.splice(index,1);
+    data(){
+      return{
+          planList:localStorageUtil.readItems()
+      }
     },
-    //是否全部选中
-    selectedAllItem(isCheck){
-      this.planList.forEach(item=>{
-        item.finished=isCheck;
-      })
+    methods:{
+      //插入一条任务
+      addItem(item){
+        this.planList.unshift(item);
+      },
+      //根据索引删除一条记录
+      delTodo(index){
+        this.planList.splice(index,1);
+      },
+      //是否全部选中
+      selectedAllItem(isCheck){
+        this.planList.forEach(item=>{
+          item.finished=isCheck;
+        })
+      },
+      //清除选中任务
+      clearFinishedItem:function(){
+        this.planList = this.planList.filter(item=>!item.finished);
+      }
     },
-    //清除选中任务
-    clearFinishedItem:function(){
-      this.planList = this.planList.filter(item=>!item.finished);
+    watch:{
+      //深度监视
+      planList:{
+        handler:localStorageUtil.saveItems(),
+        deep:true,
+        immediate:true,
+      }
     }
   }
-}
 </script>
 
 <style>
