@@ -21,7 +21,7 @@
   import List from './components/List.vue'
   import Footer from './components/Footer.vue'
   //引入工具类
-  import localStorageUtil from './utills/localStorageUtil'
+  import localStorageUtil from './utils/localStorageUtil'
 
   export default {
     name: 'app',
@@ -58,8 +58,8 @@
     watch:{
       //深度监视
       planList:{
-        handler:localStorageUtil.saveItems(),
-        deep:true,
+        handler:localStorageUtil.saveItems,
+        deep:true,//开启
         immediate:true,
       }
     }
